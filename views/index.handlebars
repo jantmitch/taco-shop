@@ -1,1 +1,11 @@
 <h1>Let's Taco Bout It!!</h1>
+
+<h3>Tacos to Devour</h3>
+
+<ul>
+    {{#each taco_name}}
+        {{#unless devoured}}
+        {{>tacos/taco-block devoured=false}}
+    {{/unless}}
+    {{/each}}
+</ul>
