@@ -1,3 +1,4 @@
+
 var express = require("express");
 
 var router = express.Router();
@@ -7,11 +8,19 @@ var taco = require("../models/tacos.js");
 
 router.get("/", function(req, res){
     taco.all(function(data){
-        var object = {
-            tacos: data
-        };
-        console.log(object);
-        res.render("index", object);
+        var devoured = [];
+        var notDevoured = [];
+        for (var i = 0; i < data.length; i++){
+            if (data[i].devoured == 0) {
+                notDevoured.push(data[i]);
+            }
+            if (data[i].devoured == 1) {
+                devoured.push(data[i]);
+            }
+        }
+        var data = {devoured, notDevoured};
+        console.log(data);
+        res.render("index", data);
     });
 });
 

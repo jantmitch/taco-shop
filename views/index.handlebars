@@ -3,9 +3,23 @@
 <h3>Tacos to Devour</h3>
 
 <ul>
-    {{#each taco_name}}
-        {{#unless devoured}}
-        {{>tacos/taco-block devoured=false}}
-    {{/unless}}
+ {{#each notDevoured}}
+ 
+    <li>{{taco_name}} devoured: no</li>
+    
     {{/each}}
+</ul>
+
+<h3>
+    You have devoured!
+</h3>
+<ul>
+ 
+    {{#each devoured}}
+    <li>
+        {{taco_name}}
+        devoured: yes
+   </li>
+    {{/each}}
+    
 </ul>
